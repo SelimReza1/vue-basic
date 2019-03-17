@@ -6,47 +6,112 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Vue Js</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Vue Js Calculator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 </head>
 <body>
 <div id="app">
     <div class="container">
-        <h2>V-model Example</h2>
-        <p class="text-success">Welcome {{name}}</p>
-        <hr>
-        <p>{{status}}</p>
-        <input type="text" id="name" class="form-control" @keyup="checkName" v-model="name">
-        <button type="button" class="btn btn-success btn-lg" v-on:click="welcomeMe">submit</button>
+        <h2 class="text-center mt-2">Simple Calculator Using Vue</h2>
+        <div class="card mt-5">
+            <div class="card-body">
+                <div class="alert alert-danger" v-if="haserror">
+                    {{error}}
+                </div>
+                <div class="alert alert-success" v-else>
+                    result ={{result}}
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="first_number" name="first_number"
+                               v-model="first_number" @keyup="checkerror" placeholder="Enter your first number">
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="second_number" name="second_number"
+                               v-model="second_number" @keyup="checkerror" placeholder="Enter your second number">
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-3">
+                        <button class="btn btn-success btn-block" type="button" @click="plus">+</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-success btn-block" type="button" @click="minus">-</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-success btn-block" type="button" @click="multiply">*</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-success btn-block" type="button" @click="divide">/</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <!--for event on we can use @ insted of v-on: example @click-->
-        <button type="button" class="btn btn-success btn-lg" @click="welcomeMe">submit</button>
     </div>
 
 </div>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 <script type="text/javascript" src="js/vue.js"></script>
 <script type="text/javascript">
     var app = new Vue({
         el: "#app",
         data: {
-            name: " ",
-            status: " "
+            first_number: " ",
+            second_number: " ",
+            result: " ",
+            error: " ",
+            haserror: false
         },
         methods: {
-            welcomeMe(){
-                alert('Welcome'+this.name);
+            plus() {
+                var num1 = Number(this.first_number);
+                var num2 = Number(this.second_number);
+                var res = num1 + num2;
+                this.result = res;
             },
-            checkName(){
-                if(this.name == "Selim" ){
-                    this.status = "Welcome Brother";
-                }else{
-                    this.status = "Welcome guys";
+            minus() {
+                var num1 = Number(this.first_number);
+                var num2 = Number(this.second_number);
+                var res = num1 - num2;
+                this.result = res;
+            },
+            multiply() {
+                var num1 = Number(this.first_number);
+                var num2 = Number(this.second_number);
+                var res = num1 * num2;
+                this.result = res;
+            },
+            divide() {
+                var num1 = Number(this.first_number);
+                var num2 = Number(this.second_number);
+                var res = num1 / num2;
+                this.result = res;
+            },
+            checkerror() {
+                if (isNaN(this.first_number)) {
+                    this.haserror = true
+                    this.error = "Please Enter a Valid Number"
+                }
+                else if (isNaN(this.second_number)) {
+                    this.haserror = true
+                    this.error = "Please Enter a Valid Number"
+                } else {
+                    this.haserror = false
+                    this.error = " "
                 }
             }
+
         }
     });
 </script>
