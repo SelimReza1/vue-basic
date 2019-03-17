@@ -7,87 +7,46 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Vue Js</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
 <body>
 <div id="app">
-    <div v-if="!loading">
-        <h2>Hello {{name}}</h2>
-        <p>
-            <strong>About:</strong>
-            <br/>
-            <!--v-text directly show the text not render-->
-            <span v-text="about"></span>
-            <br/><br/>
+    <div class="container">
+        <h2>V-model Example</h2>
+        <p class="text-success">Welcome {{name}}</p>
+        <hr>
+        <p>{{status}}</p>
+        <input type="text" id="name" class="form-control" @keyup="checkName" v-model="name">
+        <button type="button" class="btn btn-success btn-lg" v-on:click="welcomeMe">submit</button>
 
-            <!--v-html render the text-->
-            <span v-html="about"></span>
-            <br/><br/>
-
-            <!--v-once not changeable fixed value  you can try to change from console-->
-            <strong>Phone No:</strong>
-            <span v-once>{{contact}}</span>
-            <br/><br>
-
-            <!--v-if v-else-->
-        <div v-if="gender">
-            <span>{{contact}}</span>
-        </div>
-        <div v-else>
-            <span>Sorry! you are not eligible for contact number</span>
-        </div>
-
-        </p>
-    </div>
-    <div v-else>
-        <p>Loading........</p>
+        <!--for event on we can use @ insted of v-on: example @click-->
+        <button type="button" class="btn btn-success btn-lg" @click="welcomeMe">submit</button>
     </div>
 
-    <!--v-show work like v-if but it just add display none but v-if remove tag -->
-    <div v-show="gender">
-        <p>showing v-show tag value</p>
-    </div>
-
-    <!--v-bind need to use for attribute binding-->
-    <img v-bind:src="image_url" v-bind:alt="name">
-    <a v-bind:href="website_link" v-bind:alt="name">{{website_link}}</a><br>
-
-    <!--we can write it by removing v-bind also if we write just : it means v-bind:-->
-    <img :src="image_url" :alt="name"> <br>
-    <a :href="website_link" :alt="name">{{website_link}}</a><br>
-
-    <!--v-for uses-->
-    <strong>Favourite Languages({{languages.length}})</strong>
-    <ul>
-        <li v-for="language in languages">{{language}}</li>
-    </ul>
-    <h3>Best Book Name: {{best_book.name}}</h3>
-    <h3>Best Book Price: {{best_book.price}}</h3>
 </div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script type="text/javascript" src="js/vue.js"></script>
 <script type="text/javascript">
     var app = new Vue({
         el: "#app",
         data: {
-            name: "Selim Reza",
-            gender: false,
-            loading: true,
-            about: "I am a student of daffodil <br />My faculity is SWE",
-            contact: 0198199,
-            image_url: "https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-            website_link: "https://google.com",
-            languages: [
-                'php',
-                'js',
-                'java',
-                'c'
-            ],
-            best_book: {
-                name: "Java",
-                price: 40
-            }
+            name: " ",
+            status: " "
         },
-        mounted() {             //mounted it will be fire at loading time
-            this.loading = false;
+        methods: {
+            welcomeMe(){
+                alert('Welcome'+this.name);
+            },
+            checkName(){
+                if(this.name == "Selim" ){
+                    this.status = "Welcome Brother";
+                }else{
+                    this.status = "Welcome guys";
+                }
+            }
         }
     });
 </script>
