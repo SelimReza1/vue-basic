@@ -10,34 +10,34 @@
 </head>
 <body>
 <div id="app">
-   <div v-if="!loading">
-       <h2>Hello {{name}}</h2>
-       <p>
-           <strong>About:</strong>
-           <br />
-           <!--v-text directly show the text not render-->
-           <span v-text="about"></span>
-           <br /><br />
+    <div v-if="!loading">
+        <h2>Hello {{name}}</h2>
+        <p>
+            <strong>About:</strong>
+            <br/>
+            <!--v-text directly show the text not render-->
+            <span v-text="about"></span>
+            <br/><br/>
 
-           <!--v-html render the text-->
-           <span v-html="about"></span>
-           <br /><br />
+            <!--v-html render the text-->
+            <span v-html="about"></span>
+            <br/><br/>
 
-           <!--v-once not changeable fixed value  you can try to change from console-->
-           <strong>Phone No:</strong>
-           <span v-once>{{contact}}</span>
-           <br /><br>
+            <!--v-once not changeable fixed value  you can try to change from console-->
+            <strong>Phone No:</strong>
+            <span v-once>{{contact}}</span>
+            <br/><br>
 
-           <!--v-if v-else-->
-       <div v-if="gender">
-           <span>{{contact}}</span>
-       </div>
-       <div v-else>
-           <span>Sorry! you are not eligible for contact number</span>
-       </div>
+            <!--v-if v-else-->
+        <div v-if="gender">
+            <span>{{contact}}</span>
+        </div>
+        <div v-else>
+            <span>Sorry! you are not eligible for contact number</span>
+        </div>
 
-       </p>
-   </div>
+        </p>
+    </div>
     <div v-else>
         <p>Loading........</p>
     </div>
@@ -46,6 +46,22 @@
     <div v-show="gender">
         <p>showing v-show tag value</p>
     </div>
+
+    <!--v-bind need to use for attribute binding-->
+    <img v-bind:src="image_url" v-bind:alt="name">
+    <a v-bind:href="website_link" v-bind:alt="name">{{website_link}}</a><br>
+
+    <!--we can write it by removing v-bind also if we write just : it means v-bind:-->
+    <img :src="image_url" :alt="name"> <br>
+    <a :href="website_link" :alt="name">{{website_link}}</a><br>
+
+    <!--v-for uses-->
+    <strong>Favourite Languages({{languages.length}})</strong>
+    <ul>
+        <li v-for="language in languages">{{language}}</li>
+    </ul>
+    <h3>Best Book Name: {{best_book.name}}</h3>
+    <h3>Best Book Price: {{best_book.price}}</h3>
 </div>
 <script type="text/javascript" src="js/vue.js"></script>
 <script type="text/javascript">
@@ -56,9 +72,21 @@
             gender: false,
             loading: true,
             about: "I am a student of daffodil <br />My faculity is SWE",
-            contact: 0198199
+            contact: 0198199,
+            image_url: "https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+            website_link: "https://google.com",
+            languages: [
+                'php',
+                'js',
+                'java',
+                'c'
+            ],
+            best_book: {
+                name: "Java",
+                price: 40
+            }
         },
-        mounted(){             //mounted it will be fire at loading time
+        mounted() {             //mounted it will be fire at loading time
             this.loading = false;
         }
     });
