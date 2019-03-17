@@ -1,4 +1,5 @@
 <!doctype html>
+<!--suppress ALL -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,14 +10,56 @@
 </head>
 <body>
 <div id="app">
-    <h2>Hello {{name}}</h2>
+   <div v-if="!loading">
+       <h2>Hello {{name}}</h2>
+       <p>
+           <strong>About:</strong>
+           <br />
+           <!--v-text directly show the text not render-->
+           <span v-text="about"></span>
+           <br /><br />
+
+           <!--v-html render the text-->
+           <span v-html="about"></span>
+           <br /><br />
+
+           <!--v-once not changeable fixed value  you can try to change from console-->
+           <strong>Phone No:</strong>
+           <span v-once>{{contact}}</span>
+           <br /><br>
+
+           <!--v-if v-else-->
+       <div v-if="gender">
+           <span>{{contact}}</span>
+       </div>
+       <div v-else>
+           <span>Sorry! you are not eligible for contact number</span>
+       </div>
+
+       </p>
+   </div>
+    <div v-else>
+        <p>Loading........</p>
+    </div>
+
+    <!--v-show work like v-if but it just add display none but v-if remove tag -->
+    <div v-show="gender">
+        <p>showing v-show tag value</p>
+    </div>
 </div>
 <script type="text/javascript" src="js/vue.js"></script>
 <script type="text/javascript">
     var app = new Vue({
         el: "#app",
         data: {
-            name: "Selim Reza"
+            name: "Selim Reza",
+            gender: false,
+            loading: true,
+            about: "I am a student of daffodil <br />My faculity is SWE",
+            contact: 0198199
+        },
+        mounted(){             //mounted it will be fire at loading time
+            this.loading = false;
         }
     });
 </script>
