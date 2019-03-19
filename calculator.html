@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculator Vue</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div id="app">
+<div class="container">
+    <h2 class="text-center mt-3">Simple Calculator Using Vue JS</h2>
+   <div class="card mt-3">
+       <div class="card-body">
+
+           <div class="alert alert-danger" v-if = "haserror">
+            {{error}}
+           </div>
+           <div class="alert alert-success" v-else>
+               Result ={{result}}
+           </div>
+           <div class="row">
+               <div class="col-md-6">
+                   <input type="text" class="form-control" name="first_number" @keyup="checkError" v-model="first_number" placeholder="First Number">
+               </div>
+               <div class="col-md-6">
+                   <input type="text" class="form-control" name="second_number" @keyup="checkError" v-model="second_number" placeholder="Second Number">
+
+               </div>
+           </div>
+           <div class="row mt-3">
+               <div class="col-md-3">
+                   <button type="button" class="btn-block btn btn-success" @click="plus">+</button>
+               </div>
+               <div class="col-md-3">
+                   <button type="button" class="btn-block btn btn-success" @click="minus">-</button>
+               </div>
+               <div class="col-md-3">
+                   <button type="button" class="btn-block btn btn-success" @click="mul">*</button>
+               </div>
+               <div class="col-md-3">
+                   <button type="button" class="btn-block btn btn-success" @click="divided">/</button>
+               </div>
+           </div>
+       </div>
+   </div>
+
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+    var app = new Vue({
+        el: "#app",
+       data: {
+            first_number: " ",
+           second_number: " ",
+           result: " ",
+           error: " ",
+           haserror: false,
+       },
+       methods: {
+        plus(){
+            var num1= Number(this.first_number)
+            var num2= Number(this.second_number)
+            var res = num1 + num2;
+            this.result = res;
+        },
+           minus(){
+               var num1= Number(this.first_number)
+               var num2= Number(this.second_number)
+               var res = num1 - num2;
+               this.result = res;
+           },
+           mul(){
+               var num1= Number(this.first_number)
+               var num2= Number(this.second_number)
+               var res = num1 * num2;
+               this.result = res;
+           },
+           divided(){
+               var num1= Number(this.first_number)
+               var num2= Number(this.second_number)
+               var res = num1 / num2;
+               this.result = res;
+           },
+           checkError(){
+               if(isNaN(this.first_number)){
+                   this.haserror = true;
+                   this.error = "Enter Valid Number";
+               }
+               else if(isNaN(this.second_number)){
+                   this.haserror = true;
+                   this.error = "Enter Valid Number";
+               }else{
+                   this.haserror= false
+                   this.error = " "
+               }
+           }
+       }
+    });
+</script>
+</body>
+</html>
