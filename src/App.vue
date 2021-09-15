@@ -2,9 +2,9 @@
  <h2>Full Name - {{firstName}} {{lastName}}</h2>
 <h2>Computed full name {{fullName}}</h2>
   <button @click="items.push({id:4,title:'keyboard',price:50})">Add Item</button>
-  <h2>
-    Computed Total - {{total}}
-  </h2>
+  <h2>Computed Total - {{total}}</h2>
+  <h2>Method Total - {{getTotal()}}</h2>
+  <input type="text" v-model="country">
 </template>
 
 <script>
@@ -31,17 +31,23 @@ export default {
           title: 'Laptop',
           price: 300,
         },
-      ]
+      ],
+      country:''
     }
   },
   methods: {
-
+    getTotal(){
+      console.log('get total method');
+      return this.items.reduce((total, curr) =>(total = total + curr.price), 0);
+    }
   },
   computed: {
     fullName(){
+
       return this.firstName +' '+ this.lastName;
     },
     total(){
+      console.log('total computed property');
       return this.items.reduce((total, curr) =>(total = total + curr.price), 0);
     },
   },
