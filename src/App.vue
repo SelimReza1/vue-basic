@@ -1,16 +1,21 @@
 <template>
-<Greet name="Vaijan" heroName="Salman" />
-<Greet name="3 Idiot" heroName="Amir"/>
-<Greet name="Happy New Year" heroName="SRK" />
-  <Greet :name="name" :heroName="heroName" />
+<!--<Greet name="Vaijan" heroName="Salman" />-->
+<!--<Greet name="3 Idiot" heroName="Amir"/>-->
+<!--<Greet name="Happy New Year" heroName="SRK" />-->
+<!--  <Greet :name="name" :heroName="heroName" />-->
+  <Article title="Article Title" :likes="50" :is-published="true" />
 </template>
 
 <script>
 
-import Greet from "./components/Greet";
+//import Greet from "./components/Greet";
+import Article from "./components/Article";
 export default {
   name: 'App',
-  components: {Greet},
+  components: {
+  //  Greet,
+    Article,
+  },
   data(){
     return{
       name: 'Dhoom 2',
