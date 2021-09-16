@@ -1,63 +1,22 @@
 <template>
-<h2>Volume Tracker (0-20)</h2>
-  <h2>Curent Volume {{volume}}</h2>
-  <div>
-    <button @click="volume +=2">Increase</button>
-    <button @click="volume -=2">Decrease</button>
-  </div>
-  <input type="text" v-model="movie">
-  <input type="text" v-model="movieInfo.title">
-  <input type="text" v-model="movieInfo.actor">
-  <button @click="movieList = movieList.concat(['Wonder Woman'])">Add Movie</button>
+<Greet name="Vaijan" heroName="Salman" />
+<Greet name="3 Idiot" heroName="Amir"/>
+<Greet name="Happy New Year" heroName="SRK" />
+  <Greet :name="name" :heroName="heroName" />
 </template>
 
 <script>
 
+import Greet from "./components/Greet";
 export default {
   name: 'App',
-  data() {
+  components: {Greet},
+  data(){
     return{
-        volume: 0,
-      movie: 'Batman',
-      movieInfo: {
-          title: '',
-          actor: '',
-      },
-      movieList: ['Batman', 'Superman'],
+      name: 'Dhoom 2',
+      heroName: 'Hrittik',
     }
-  },
-  methods: {
-
-  },
-  computed: {
-
-  },
-  watch:{
-    volume(newValue, oldValue){
-      if(newValue > oldValue && newValue === 16){
-        alert('Listening to a high volume for a long time may damage your hearing');
-      }
-    },
-    movie: {
-      handler(newValue){
-        console.log('Calling Api with movie name=' + newValue);
-      },
-      immediate: true,
-    },
-    movieInfo: {
-      handler(newValue){
-        console.log('Calling Api with movie title= '+ newValue.title + ' and actor= '+ newValue.actor);
-      },
-      deep: true,
-    },
-    movieList:{
-      handler(newValue){
-        console.log('Updated List '+ newValue);
-      },
-      // deep: true,
-    }
-
-    },
+  }
 }
 </script>
 
@@ -70,41 +29,6 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-.underline {
-  text-decoration: underline;
-}
-.promoted {
-  font-style: italic;
-}
 
-.new {
-  color: olivedrab;
-}
-.soldout {
-  color: red;
-}
-label {
-  font-weight: bold;
-  display: flex;
-  margin-bottom: 5px;
-}
-input + label {
-  font-weight: bold;
-  display: inline-flex;
-  margin-right: 20px;
-}
-input[type='text'],
-textarea,
-select {
-  display: block;
-  width: 400px;
-  padding: 6px 12px;
-  font-size: 14px;
-  line-height: 1.42857143;
-  color: #555;
-  background-color: #fff;
-  background-image: none;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
+
 </style>
