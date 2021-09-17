@@ -1,26 +1,30 @@
 <template>
-  <Card>
-    <template v-slot:header>
-    <h2>Header</h2>
+  <NameList>
+    <template v-slot:default="slotProps">
+      {{ slotProps.firstname }}  {{ slotProps.lastname }}
     </template>
-    <template v-slot:content>
-      <h2>Content</h2>
+  </NameList>
+  <NameList>
+    <template v-slot:default="slotProps">
+      {{ slotProps.firstname }}  {{ slotProps.lastname }}
     </template>
-    <template v-slot:footer>
-      <h2>Footer</h2>
-    </template>
-  </Card>
+  </NameList>
 
+  <NameList>
+    <template v-slot:default="slotProps">
+      {{ slotProps.firstname }}
+    </template>
+  </NameList>
 </template>
 
 <script>
 
 
-import Card from "./components/Card";
+import NameList from "./components/NameList";
 export default {
   name: 'App',
   components: {
-    Card,
+    NameList
   },
   data() {
     return {
