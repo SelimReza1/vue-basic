@@ -1,7 +1,16 @@
 <template>
-  <Card></Card>
-  <Card>Card Content</Card>
-  <Card><h2>Card Content Heading</h2></Card>
+  <Card>
+    <template v-slot:header>
+    <h2>Header</h2>
+    </template>
+    <template v-slot:content>
+      <h2>Content</h2>
+    </template>
+    <template v-slot:footer>
+      <h2>Footer</h2>
+    </template>
+  </Card>
+
 </template>
 
 <script>
