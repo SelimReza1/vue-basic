@@ -1,19 +1,20 @@
 <template>
- <Input v-model="name" />
+  <Card></Card>
+  <Card>Card Content</Card>
+  <Card><h2>Card Content Heading</h2></Card>
 </template>
 
 <script>
 
 
-import Input from "./components/Input";
+import Card from "./components/Card";
 export default {
   name: 'App',
   components: {
-    Input
+    Card,
   },
   data() {
     return {
-      name: ''
     }
   },
   methods: {
