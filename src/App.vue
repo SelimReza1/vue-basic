@@ -1,27 +1,23 @@
 <template>
-  <button @click="showPopup = true">Show Popup</button>
-<Popup v-if="showPopup" @close="closePopup"/>
+ <Input v-model="name" />
 </template>
 
 <script>
 
 
-import Popup from "./components/Popup";
+import Input from "./components/Input";
 export default {
   name: 'App',
   components: {
-    Popup
+    Input
   },
   data() {
     return {
-      showPopup: false,
+      name: ''
     }
   },
   methods: {
-    closePopup(name){
-      this.showPopup = false,
-          console.log('name',name);
-    }
+
   }
 }
 </script>
