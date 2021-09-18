@@ -1,14 +1,14 @@
 <template>
-  <Data />
+  <DemoTwo />
 </template>
 
 <script>
 
-import Data from "./components/Data";
+import DemoTwo from "./components/DemoTwo";
 export default {
   name: 'App',
   components: {
-    Data
+    DemoTwo,
 
   },
   data() {
