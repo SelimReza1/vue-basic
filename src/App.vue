@@ -1,13 +1,13 @@
 <template>
-<PostList />
+  <TemplateRef />
 </template>
 
 <script>
-import PostList from "./components/PostList";
+import TemplateRef from "./components/TemplateRef";
 export default {
   name: 'App',
   components: {
-    PostList
+    TemplateRef
 
   },
   data() {
