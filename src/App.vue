@@ -1,14 +1,14 @@
 <template>
-  <VModel />
+  <Computed />
 </template>
 
 <script>
 
-import VModel from "./components/VModel";
+import Computed from "./components/Computed";
 export default {
   name: 'App',
   components: {
-    VModel
+    Computed
 
   },
   data() {
