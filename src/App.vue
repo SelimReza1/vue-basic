@@ -1,14 +1,14 @@
 <template>
-  <DemoTwo />
+  <Methods />
 </template>
 
 <script>
 
-import DemoTwo from "./components/DemoTwo";
+import Methods from "./components/Methods";
 export default {
   name: 'App',
   components: {
-    DemoTwo,
+    Methods
 
   },
   data() {
