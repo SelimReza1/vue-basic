@@ -1,13 +1,16 @@
 <template>
-  <TemplateRef />
+  <ClickCounter />
+  <hover-counter />
 </template>
 
 <script>
-import TemplateRef from "./components/TemplateRef";
+import ClickCounter from "./components/ClickCounter";
+import HoverCounter from "./components/HoverCounter";
 export default {
   name: 'App',
   components: {
-    TemplateRef
+    HoverCounter,
+    ClickCounter,
 
   },
   data() {
