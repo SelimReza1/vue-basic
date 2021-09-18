@@ -1,14 +1,14 @@
 <template>
-  <Methods />
+  <VModel />
 </template>
 
 <script>
 
-import Methods from "./components/Methods";
+import VModel from "./components/VModel";
 export default {
   name: 'App',
   components: {
-    Methods
+    VModel
 
   },
   data() {
